@@ -158,6 +158,3 @@ def test_add_article(authenticated_page: Page):
     # 8-10. Отправка и проверки
     submit_button = authenticated_page.locator("button:has-text('Сохранить работу')")
     authenticated_page.wait_for_selector("button:has-text('Сохранить работу'):not([disabled])")
-
-
-л
