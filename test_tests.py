@@ -160,3 +160,4 @@ def test_add_article(authenticated_page: Page):
     authenticated_page.wait_for_selector("button:has-text('Сохранить работу'):not([disabled])")
 
 
+л
