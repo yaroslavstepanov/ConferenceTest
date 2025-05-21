@@ -173,7 +173,7 @@ def test_logout(authenticated_page: Page):
     # Например, проверяем наличие кнопки "Вход" на главной странице
     expect(authenticated_page.get_by_role("button", name="Вход")).to_be_visible()
 
-def delete_article(authenticated_page: Page):
+def test_delete_article(authenticated_page: Page):
     # Конфигурация тестовых данных
     article_data = {
         "title": "Автоматизированное тестирование веб-интерфейсов",
@@ -230,3 +230,15 @@ def delete_article(authenticated_page: Page):
     # 11. Клик на кнопку "Мои работы" (находим сразу, без привязки к блоку)
     my_articles_button = authenticated_page.locator("button.btn.btn-outline-primary.px-4.ng-star-inserted:has-text('Мои работы')")
     my_articles_button.click()
+
+        # 11. Поиск второй кнопки "Открыть" в списке работ
+    open_buttons = authenticated_page.locator(
+        "//*[contains(text(), 'Автоматизированное тестирование веб-интерфейсов')]"
+        "/following::button[contains(., 'Открыть')]"
+    )
+    second_open_button = open_buttons.nth(1)
+
+    # Проверка и взаимодействие с кнопкой
+    expect(second_open_button).to_be_visible()
+    second_open_button.click()
+    sleep(20)
